@@ -143,7 +143,7 @@ export default function Home() {
               {
                 title: "CareerBridge",
                 description: "Helping career changers identify and articulate transferable skills they didn't know they had.",
-                image: "/images/project-3.png",
+                image: "/images/careerbridge.png",
                 tags: ["Next.js", "Framer Motion", "Tailwind"],
                 demo: "#",
                 repo: "#",
@@ -244,33 +244,32 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-8">
             {[
               {
-                title: "Building Scalable React Applications",
-                date: "Dec 2025",
-                excerpt: "Best practices for structuring large React codebases with TypeScript and modern tooling.",
-                readTime: "8 min read",
-              },
-              {
-                title: "Mastering PostgreSQL Performance",
+                title: "Accessibility Audit - Apple Music (Web Version)",
                 date: "Nov 2025",
-                excerpt: "Deep dive into query optimization, indexing strategies, and database design patterns.",
+                excerpt: "Accessibility audit improving Apple Music's web player experience.",
                 readTime: "12 min read",
+                url: "https://docs.google.com/document/d/e/2PACX-1vQRX4ex8XmXM4zVw6senYLCrhg6EU3f8yn-e4j18a34bqxDxFnQMwVw5ln22KoXgfqfY2OkFxUpWeIf/pub", 
               },
               {
-                title: "The Art of API Design",
-                date: "Oct 2025",
-                excerpt: "Creating intuitive, maintainable REST APIs that developers love to use.",
-                readTime: "6 min read",
+                title: "Khan Academy Redesign",
+                date: "April 2025",
+                excerpt: "Accessible learning platform redesign for low-income K-12 children.",
+                readTime: "5 min read",
+                url: "https://sincere-ping-bd6.notion.site/Khan-Academy-Redesigned-1e4238dc2b6080058698fb0a99790f45?source=copy_link",
               },
               {
-                title: "CSS Grid vs Flexbox in 2025",
-                date: "Sep 2025",
-                excerpt: "When to use each layout system and how to combine them for powerful designs.",
-                readTime: "10 min read",
+                title: "CollegeSHARC",
+                date: "April 2025",
+                excerpt: "College application navigator for first-generation students.",
+                readTime: "3 min read",
+                url: "https://sincere-ping-bd6.notion.site/CollegeSHARK-1e4238dc2b6080719e07e00e4551ab85?source=copy_link",
               },
             ].map((post, idx) => (
               <a
                 key={idx}
-                href="#"
+                href={post.url}
+                target={post.url !== "#" ? "_blank" : undefined}
+                rel={post.url !== "#" ? "noopener noreferrer" : undefined}
                 className="block bg-white rounded-3xl p-8 hover:scale-105 hover:shadow-xl hover:shadow-primary/20 transition-all border border-primary/10 group"
               >
                 <div className="text-sm font-medium text-primary mb-3">{post.date} · {post.readTime}</div>
