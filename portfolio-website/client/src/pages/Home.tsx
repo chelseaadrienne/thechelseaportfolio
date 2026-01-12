@@ -1,8 +1,9 @@
 /**
- * Soft Pastel Dreamy Portfolio
+ * 
  * Design: Soft pink (#F5A8C7), cream background (#FFF8F0), rounded organic shapes
- * Typography: Space Grotesk (headings), DM Sans (body)
- * Aesthetic: Playful, gentle, whimsical
+ * Run locally: cd portfolio-website
+pnpm install
+pnpm dev
  */
 
 import { Button } from "@/components/ui/button";
