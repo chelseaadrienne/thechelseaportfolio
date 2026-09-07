@@ -1,11 +1,3 @@
-/**
- * 
- * Design: Soft pink (#F5A8C7), cream background (#FFF8F0), rounded organic shapes
- * Run locally: cd portfolio-website
-pnpm install
-pnpm dev
- */
-
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -16,6 +8,61 @@ import { toast } from "sonner";
 
 export default function Home() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+
+  const experiences = [
+    {
+      role: "Security Engineer",
+      company: "Equifax",
+      period: "June 2026 – Present",
+      type: "Full-time",
+      summary:
+        "Role spanning threat monitoring, triage, and cloud/app/identity security, using AI-enabled tools and cross-team collaboration to strengthen enterprise security posture.",
+      bullets: [
+        "Engineered Python and Docker automation workflows using Palo Cortex XSOAR and Virus Total REST APIs to validate sinkhole URLs and password reset statuses, slashing false positive tickets by 65% and saving 8 hours of manual triage weekly",
+        "Co-developed a real-time threat intelligence scraper with 2 engineers to aggregate hacker conference discussions across X and targeted websites via web hooks into Google Sheets, cutting early threat identification time by 40%.",
+        "Triaged leaked credentials, sinkhole data, external feeds, and dark web forum tickets in Cortex XSOAR and Cybersixgill, maintaining a 98% SLA compliance rate for critical incidents.",
+      ],
+    },
+    {
+      role: "Technology Operations Intern",
+      company: "Vanguard",
+      period: "May 2025 - August 2025",
+      type: "Internship",
+      summary:
+        "Conducted network security research and administration while engineering data-driven tools to support operational visibility and compliance.",
+      bullets: [
+        "Conducted in-depth firewall configuration research using Palo Alto Panorama and Microsoft Excel to audit and validate network objects and firewall rules, ensuring adherence to security standards and compliance requirements.",
+        "Gained practical exposure to CLI-based administration of Juniper network devices using SuperPuTTY/PuTTY to apply and modify configuration settings.",
+        "Engineered a Python-based PagerDuty incident analytics dashboard utilizing pandas, NumPy, Plotly, Seaborn, and Matplotlib to surface insights into duplicate incidents, service team alert patterns, and temporal trends across operational data. Acted as the sole Python developer on the team, taking full ownership of the technical implementation and delivering the critical end product that the broader team depended on to complete the project.",
+      ],
+    },
+        {
+      role: "Technical Support Agent II",
+      company: "Georgia Tech",
+      period: "August 2024 - May 2026",
+      type: "Part-time",
+      summary:
+        "Gained hands-on experience in IT security operations and system administration, supporting risk management practices within an enterprise technology environment.",
+      bullets: [
+        "Administered Active Directory to manage user accounts, security groups, and workstations, ensuring consistent enforcement of group policy across the organisation.",
+        "Leveraged ServiceNow as the primary platform for managing customer support tickets and tracking devices throughout their lifecycle.",
+        "Utilised BeyondTrust to provide secure remote assistance to end users, diagnosing and resolving technical issues efficiently.",
+      ],
+    },
+    {
+      role: "Cloud Security Data Analyst Intern",
+      company: "Deloitte",
+      period: "June 2024 - August 2024",
+      type: "Internship",
+      summary:
+        "Built tools spanning front-end development, security analytics, and data reporting, gaining broad hands-on technical experience.",
+      bullets: [
+        "Developed a functional Chrome Extension for password management, leveraging HTML, SCSS, and Figma to deliver a polished, user-friendly interface from design through implementation.",
+        "Built Power BI dashboards to track and communicate cloud security metrics and container vulnerabilities, enabling teams to monitor risk exposure through clear, real-time visual reporting.",
+        "Designed and executed Python scripts to extract and analyze security data from PrismaCloud and DynamoDB, delivering actionable insights into cloud security posture.",
+      ],
+    }
+  ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,6 +77,12 @@ export default function Home() {
         <div className="container mx-auto px-6 py-5 flex justify-between items-center">
           <div className="text-2xl font-bold text-primary">Chelsea.</div>
           <div className="flex gap-8 items-center">
+            <a href="#experience" className="font-medium text-foreground/70 hover:text-primary transition-colors">
+              Experience
+            </a>
+            <a href="#education" className="font-medium text-foreground/70 hover:text-primary transition-colors">
+              Education
+            </a>
             <a href="#projects" className="font-medium text-foreground/70 hover:text-primary transition-colors">
               Projects
             </a>
@@ -62,10 +115,10 @@ export default function Home() {
             <div className="relative inline-block">
               <div className="bg-primary/20 rounded-[40px] px-12 py-8 backdrop-blur-sm">
                 <p className="text-2xl text-foreground/80 font-medium">
-                  Georgia Tech Computer Science Student
+                  Software Security Engineer
                 </p>
                 <p className="text-lg text-foreground/60 mt-2">
-                  Building beautiful, functional web experiences.
+                  Engineering secure, resilient web experiences.
                 </p>
               </div>
               <Heart className="absolute -top-3 -right-3 w-8 h-8 text-primary fill-current animate-pulse" />
@@ -101,15 +154,94 @@ export default function Home() {
               </a>
             </div>
             
-            <div className="flex flex-wrap gap-3 justify-center pt-8">
-              {["React", "TypeScript", "Node.js", "Python", "PostgreSQL", "TailwindCSS", "Figma", "PowerBI"].map((tech) => (
-                <div
-                  key={tech}
-                  className="px-6 py-2 bg-white rounded-full font-medium text-foreground/70 shadow-sm hover:shadow-md hover:scale-105 transition-all border border-primary/10"
-                >
-                  {tech}
+          </div>
+        </div>
+      </section>
+
+      {/* Experience Section */}
+      <section id="experience" className="py-24 bg-white/50">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-5xl font-bold text-primary mb-4">Experience</h2>
+            <p className="text-xl text-foreground/60">A snapshot of my engineering journey.</p>
+          </div>
+
+          <div className="max-w-5xl mx-auto space-y-8">
+            {experiences.map((job, index) => (
+              <div
+                key={`${job.role}-${job.period}`}
+                className="relative rounded-[32px] border border-primary/10 bg-white p-8 shadow-sm hover:shadow-lg hover:shadow-primary/10 transition-all"
+              >
+                {index !== experiences.length - 1 && (
+                  <div className="absolute left-8 top-full h-8 w-px bg-primary/20" aria-hidden="true" />
+                )}
+
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                  <div className="space-y-3">
+                    <div className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-semibold text-primary">
+                      {job.type}
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-foreground">{job.role}</h3>
+                      <p className="text-lg text-primary/80 font-medium">{job.company}</p>
+                    </div>
+                  </div>
+
+                  <div className="text-sm font-medium uppercase tracking-[0.2em] text-foreground/50">
+                    {job.period}
+                  </div>
                 </div>
-              ))}
+
+                <p className="mt-6 text-foreground/70 leading-relaxed">{job.summary}</p>
+
+                <ul className="mt-6 space-y-3 text-foreground/70">
+                  {job.bullets.map((bullet) => (
+                    <li key={bullet} className="flex gap-3">
+                      <span className="mt-2 h-2 w-2 rounded-full bg-primary flex-shrink-0" aria-hidden="true" />
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Education Section */}
+      <section id="education" className="py-24 bg-gradient-to-b from-white/50 to-background">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-5xl font-bold text-primary mb-4">Education & Certifications</h2>
+            <p className="text-xl text-foreground/60">Academic foundation and professional credentials.</p>
+          </div>
+
+          <div className="grid gap-8 lg:grid-cols-2 max-w-5xl mx-auto">
+            <div className="rounded-[32px] border border-primary/10 bg-white p-8 shadow-sm hover:shadow-lg hover:shadow-primary/10 transition-all">
+              <div className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-semibold text-primary mb-4">
+                Degree
+              </div>
+              <h3 className="text-3xl font-bold text-foreground">Georgia Institute of Technology</h3>
+              <p className="mt-3 text-xl text-primary/80 font-medium">Bachelor of Science in Computer Science</p>
+              <p className="mt-6 text-foreground/70 leading-relaxed">
+                Degree concentrations in human-computer interaction and cybersecurity. Completed minor in Spanish.
+              </p>
+            </div>
+
+            <div className="rounded-[32px] border border-primary/10 bg-white p-8 shadow-sm hover:shadow-lg hover:shadow-primary/10 transition-all">
+              <div className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-semibold text-primary mb-4">
+                Certifications
+              </div>
+              <div className="space-y-5">
+                <div>
+                  <h4 className="text-xl font-bold text-foreground">AWS Certified Cloud Practitioner</h4>
+                  <p className="text-foreground/60">Amazon Web Services</p>
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-foreground">CompTIA Security+</h4>
+                  <p className="text-foreground/60">CompTIA</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -120,7 +252,7 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-5xl font-bold text-primary mb-4">Featured Projects</h2>
-            <p className="text-xl text-foreground/60">Building cool stuff, one commit at a time</p>
+            <p className="text-xl text-foreground/60">Building cool stuff, one commit at a time.</p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -201,23 +333,23 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-5xl font-bold text-primary mb-4">Tech Stack</h2>
-            <p className="text-xl text-foreground/60">Tools I use to bring ideas to life</p>
+            <p className="text-xl text-foreground/60">Tools I use to bring ideas to life.</p>
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {[
-              { name: "JavaScript", level: 95 },
-              { name: "TypeScript", level: 90 },
-              { name: "React", level: 95 },
+              { name: "Wiz", level: 95 },
+              { name: "Palo Alto Cortex XSOAR", level: 90 },
+              { name: "VirusTotal", level: 95 },
               { name: "Node.js", level: 85 },
               { name: "Python", level: 80 },
-              { name: "PostgreSQL", level: 75 },
-              { name: "MongoDB", level: 80 },
-              { name: "Docker", level: 70 },
-              { name: "Git", level: 90 },
-              { name: "Figma", level: 85 },
-              { name: "Tailwind CSS", level: 95 },
-              { name: "REST APIs", level: 90 },
+              { name: "Cybersixgill", level: 75 },
+              { name: "Palo Alto Panorama", level: 80 },
+              { name: "Splunk", level: 70 },
+              { name: "Procmon", level: 90 },
+              { name: "Qualys", level: 85 },
+              { name: "Wireshark", level: 95 },
+              { name: "Postman", level: 90 },
             ].map((skill) => (
               <div key={skill.name} className="bg-white rounded-3xl p-6 hover:scale-105 hover:shadow-lg hover:shadow-primary/20 transition-all border border-primary/10">
                 <div className="text-xl font-bold text-foreground mb-3">{skill.name}</div>
@@ -239,7 +371,7 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-5xl font-bold text-primary mb-4">Technical Writing</h2>
-            <p className="text-xl text-foreground/60">Sharing knowledge and learning in public</p>
+            <p className="text-xl text-foreground/60">Sharing knowledge and learning in public.</p>
           </div>
           
           <div className="grid md:grid-cols-2 gap-8">
@@ -257,13 +389,6 @@ export default function Home() {
                 excerpt: "Accessible learning platform redesign for low-income K-12 children.",
                 readTime: "5 min read",
                 url: "https://sincere-ping-bd6.notion.site/Khan-Academy-Redesigned-1e4238dc2b6080058698fb0a99790f45?source=copy_link",
-              },
-              {
-                title: "CollegeSHARC",
-                date: "April 2025",
-                excerpt: "College application navigator for first-generation students.",
-                readTime: "3 min read",
-                url: "https://sincere-ping-bd6.notion.site/CollegeSHARK-1e4238dc2b6080719e07e00e4551ab85?source=copy_link",
               },
             ].map((post, idx) => (
               <a
